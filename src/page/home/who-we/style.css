@@ -1,0 +1,262 @@
+/* Who We Serve Component Styles */
+
+.who-serve {
+  width: 100%;
+  background-color: #ffffff; /* pure white background to contrast with header & solution */
+  padding: 100px 48px;
+  box-sizing: border-box;
+  color: #0f172a;
+}
+
+.who-serve__inner {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.who-serve__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 56px;
+}
+
+.who-serve__badge {
+  display: inline-block;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #0d9488;
+  background-color: rgba(13, 148, 136, 0.08);
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.who-serve__title {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  margin: 0;
+}
+
+/* Grid Layout */
+.who-serve__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  align-items: stretch;
+}
+
+/* Base Card Styling (Hospitals & Private Practitioners) */
+.who-serve__card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 28px;
+  padding: 44px 36px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.who-serve__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.04);
+  border-color: #cbd5e1;
+}
+
+/* Featured Card (Clinics - Middle Card) */
+.who-serve__card--featured {
+  background-color: #031322; /* deep dark blue-green */
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.who-serve__card--featured:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px rgba(0, 240, 208, 0.12);
+  border-color: rgba(0, 240, 208, 0.25);
+}
+
+/* Card Icon Circles */
+.who-serve__card-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #00ecd0; /* brand cyan */
+  color: #021a16;
+  margin-bottom: 24px;
+  flex-shrink: 0;
+}
+
+.who-serve__card--featured .who-serve__card-icon-container {
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #00ecd0; /* bright cyan icon */
+}
+
+/* Card Text */
+.who-serve__card-title {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 6px;
+  color: #0f172a;
+}
+
+.who-serve__card--featured .who-serve__card-title {
+  color: #ffffff;
+}
+
+.who-serve__card-subtitle {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+  margin: 0 0 32px;
+}
+
+.who-serve__card--featured .who-serve__card-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Feature Check Lists */
+.who-serve__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 36px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.who-serve__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #475569;
+  text-align: left;
+}
+
+.who-serve__card--featured .who-serve__list li {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.who-serve__check-icon {
+  color: #00cbd4;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.who-serve__card--featured .who-serve__check-icon {
+  color: #00ecd0; /* glowing cyan checks for featured card */
+}
+
+/* Card Buttons (CTAs) */
+.who-serve__cta {
+  width: 100%;
+  margin-top: auto;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #020c16; /* dark contrast button */
+  border: none;
+  border-radius: 100px;
+  padding: 14px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+}
+
+.who-serve__cta:hover {
+  background-color: #0f172a;
+  transform: translateY(-1px);
+}
+
+/* Featured Button */
+.who-serve__cta--featured {
+  color: #021a16;
+  background-color: #00ecd0; /* brand cyan */
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0, 236, 208, 0.15);
+}
+
+.who-serve__cta--featured:hover {
+  background-color: #00dfc4;
+  box-shadow: 0 6px 18px rgba(0, 236, 208, 0.3);
+}
+
+/* Floating Popular Pill Badge */
+.who-serve__card-popular-badge {
+  position: absolute;
+  top: -14px;
+  right: 28px;
+  background-color: #00ecd0;
+  color: #021a16;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 100px;
+  box-shadow: 0 4px 10px rgba(0, 236, 208, 0.25);
+  z-index: 5;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .who-serve {
+    padding: 80px 32px;
+  }
+
+  .who-serve__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .who-serve__title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 580px) {
+  .who-serve {
+    padding: 60px 20px;
+  }
+
+  .who-serve__title {
+    font-size: 30px;
+  }
+
+  .who-serve__card {
+    padding: 36px 24px;
+  }
+
+  .who-serve__card-popular-badge {
+    right: 20px;
+  }
+}
+
+
+

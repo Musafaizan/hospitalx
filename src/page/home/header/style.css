@@ -1,0 +1,499 @@
+/* CSS Variables for design system tokens */
+:root {
+  --font-sans: "Outfit", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --color-bg-dark: #020c16;
+  --color-cyan-glow: rgba(0, 240, 208, 0.18);
+  --color-cyan-bright: #00f0d0;
+  --color-cyan-dark: #021a16;
+  --color-text-white: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.7);
+  --color-text-dim: rgba(255, 255, 255, 0.55);
+  
+  /* Animation Easing Variables */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero {
+  width: 100%;
+  min-height: calc(100vh - 80px); /* accounts for typical navbar height */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-dark);
+  background-image: url("../../../assets/hospital-bg2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 80px 48px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(2, 12, 22, 0.88) 0%,
+    rgba(2, 12, 22, 0.62) 45%,
+    rgba(2, 12, 22, 0.72) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 80px;
+}
+
+/* =========================================
+   Left Content Styles 
+   ========================================= */
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--color-text-white);
+}
+
+/* Default hidden state for animated elements */
+.hero__badge,
+.hero__title,
+.hero__description,
+.hero__actions,
+.hero__trust {
+  opacity: 0; 
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(4px);
+}
+
+/* Slower trigger animations when visible */
+.hero.is-visible .hero__badge {
+  animation: fadeFromLeft 1.2s var(--ease-out-expo) both;
+}
+
+.hero__badge-icon {
+  color: var(--color-cyan-bright);
+}
+
+.hero__title {
+  font-family: var(--font-sans);
+  font-size: 55px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-text-white);
+  margin: 0 0 24px;
+}
+
+.hero.is-visible .hero__title {
+  animation: fadeFromLeft 1.2s var(--ease-out-expo) 0.2s both;
+}
+
+.hero__title-accent {
+  color: var(--color-cyan-bright);
+}
+
+.hero__description {
+  font-family: var(--font-sans);
+  font-size: 17.5px;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  max-width: 530px;
+  margin: 0 0 36px;
+}
+
+.hero.is-visible .hero__description {
+  animation: fadeFromLeft 1.2s var(--ease-out-expo) 0.4s both;
+}
+
+.hero__description strong {
+  color: var(--color-text-white);
+  font-weight: 700;
+}
+
+/* Actions & Buttons */
+.hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 44px;
+  flex-wrap: wrap;
+}
+
+.hero.is-visible .hero__actions {
+  animation: fadeFromLeft 1.2s var(--ease-out-expo) 0.6s both;
+}
+
+.hero__cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-cyan-dark);
+  background: var(--color-cyan-bright);
+  border: none;
+  border-radius: 100px;
+  padding: 15px 28px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out-expo);
+  box-shadow: 0 8px 24px rgba(0, 240, 208, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__cta-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-20deg);
+  transition: all 0.6s ease;
+}
+
+.hero__cta-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 240, 208, 0.45);
+}
+
+.hero__cta-primary:hover::after {
+  left: 150%;
+}
+
+.hero__cta-primary svg {
+  transition: transform 0.2s ease;
+}
+
+.hero__cta-primary:hover svg {
+  transform: translateX(4px);
+}
+
+.hero__cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-white);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
+  padding: 14px 26px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.hero__play-btn-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: var(--color-text-white);
+  transition: all 0.3s ease;
+}
+
+.hero__cta-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-3px);
+}
+
+.hero__cta-secondary:hover .hero__play-btn-circle {
+  border-color: var(--color-text-white);
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+/* Trust / Check Badges */
+.hero__trust {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 16px 28px;
+  max-width: 480px;
+}
+
+.hero.is-visible .hero__trust {
+  animation: fadeFromLeft 1.2s var(--ease-out-expo) 0.8s both;
+}
+
+.hero__trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.hero__trust-item:last-child {
+  grid-column: span 2;
+}
+
+.hero__trust-icon {
+  color: var(--color-cyan-bright);
+  flex-shrink: 0;
+}
+
+/* =========================================
+   Right Media (Doctor card & stats)
+   ========================================= */
+.hero__media {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__image-container,
+.hero__status-badge,
+.hero__live-patients-card {
+  opacity: 0; 
+}
+
+/* Wrapper keeps floating constantly regardless of visibility */
+.hero__image-wrapper {
+  animation: floatContinuous 6s ease-in-out infinite alternate;
+}
+
+.hero__image-container {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 28px;
+  z-index: 2;
+}
+
+.hero.is-visible .hero__image-container {
+  animation: fadeFromRight 1.6s var(--ease-out-expo) 0.3s both;
+}
+
+.hero__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 24px;
+  object-fit: cover;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
+}
+
+/* Floating Status Uptime Badge */
+.hero__status-badge {
+  position: absolute;
+  top: 24px;
+  right: -24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 100px;
+  background: rgba(10, 24, 38, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--color-text-white);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  z-index: 3;
+}
+
+.hero.is-visible .hero__status-badge {
+  animation: popIn 1.2s var(--ease-spring) 1.2s both;
+}
+
+.hero__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-cyan-bright);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.hero__status-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: var(--color-cyan-bright);
+  opacity: 0.4;
+  animation: pulse-dot 1.8s infinite ease-in-out;
+}
+
+.hero__status-value {
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+/* Floating Patients Card */
+.hero__live-patients-card {
+  position: absolute;
+  bottom: -28px;
+  left: -28px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 16px 20px;
+  min-width: 175px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  z-index: 3;
+  transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s ease;
+}
+
+.hero.is-visible .hero__live-patients-card {
+  animation: popIn 1.2s var(--ease-spring) 1.5s both;
+}
+
+.hero__live-patients-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
+}
+
+.hero__card-label {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.hero__card-value {
+  font-family: var(--font-sans);
+  font-size: 28px;
+  font-weight: 800;
+  color: #031a33;
+  line-height: 1.1;
+}
+
+.hero__card-trend {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: #16a184;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* =========================================
+   Keyframe Animations
+   ========================================= */
+@keyframes fadeFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeFromRight {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes floatContinuous {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-12px); }
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  50% { transform: scale(2); opacity: 0; }
+  100% { transform: scale(0.8); opacity: 0; }
+}
+
+/* =========================================
+   Responsive Media Queries
+   ========================================= */
+@media (max-width: 1140px) {
+  .hero__title { font-size: 52px; }
+  .hero__inner { gap: 48px; }
+}
+
+@media (max-width: 1024px) {
+  .hero { padding: 80px 32px 100px; }
+  .hero__inner { grid-template-columns: 1fr; gap: 64px; }
+  .hero__content { align-items: center; text-align: center; }
+  .hero__badge { margin-bottom: 20px; }
+  .hero__title { font-size: 48px; }
+  .hero__description { max-width: 600px; margin: 0 auto 36px; }
+  .hero__actions { justify-content: center; }
+  .hero__trust { justify-items: center; margin: 0 auto; }
+  .hero__media { order: -1; margin-bottom: 20px; }
+  .hero__image-container { max-width: 480px; }
+  .hero__status-badge { right: 0px; }
+  .hero__live-patients-card { left: 0px; }
+}
+
+@media (max-width: 580px) {
+  .hero { padding: 60px 20px 90px; }
+  .hero__title { font-size: 34px; }
+  .hero__description { font-size: 15.5px; }
+  .hero__actions { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; margin: 0 auto 36px; }
+  .hero__cta-primary, .hero__cta-secondary { justify-content: center; }
+  .hero__trust { grid-template-columns: 1fr; gap: 12px; justify-items: start; width: 100%; max-width: 280px; }
+  .hero__trust-item:last-child { grid-column: span 1; }
+  .hero__status-badge { top: 16px; right: -10px; padding: 8px 14px; font-size: 12px; }
+  .hero__live-patients-card { bottom: -20px; left: -10px; min-width: 150px; padding: 12px 16px; }
+  .hero__card-value { font-size: 24px; }
+}
