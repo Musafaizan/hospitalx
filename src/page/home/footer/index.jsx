@@ -2,9 +2,23 @@ import React from "react";
 import { Stethoscope, Mail, Phone, MapPin } from "lucide-react";
 import "./style.css";
 
-const PRODUCT_LINKS = ["Unified Solution", "Who We Serve", "Advantages", "Trust & Security"];
-const COMPANY_LINKS = ["About", "Careers", "Blog", "Contact"];
-const LEGAL_LINKS = ["Privacy", "Terms", "Security"];
+const PRODUCT_LINKS = [
+  { label: "Unified Solution", href: "/#solution" },
+  { label: "Who We Serve", href: "/#who-we-serve" },
+  { label: "Advantages", href: "/#advantages" },
+  { label: "Trust & Security", href: "/#trust" },
+];
+const COMPANY_LINKS = [
+  { label: "About", href: "/#who-we-serve" },
+  { label: "Careers", href: "/#demo" },
+  { label: "Blog", href: "/#faq" },
+  { label: "Contact", href: "/#demo" },
+];
+const LEGAL_LINKS = [
+  { label: "Privacy", href: "/#faq" },
+  { label: "Terms", href: "/#demo" },
+  { label: "Security", href: "/#trust" },
+];
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -31,8 +45,8 @@ export default function Footer() {
           <h4 className="col-title">Product</h4>
           <ul className="col-list">
             {PRODUCT_LINKS.map((link) => (
-              <li key={link}>
-                <a href="#">{link}</a>
+              <li key={link.label}>
+                <a href={link.href}>{link.label}</a>
               </li>
             ))}
           </ul>
@@ -42,8 +56,8 @@ export default function Footer() {
           <h4 className="col-title">Company</h4>
           <ul className="col-list">
             {COMPANY_LINKS.map((link) => (
-              <li key={link}>
-                <a href="#">{link}</a>
+              <li key={link.label}>
+                <a href={link.href}>{link.label}</a>
               </li>
             ))}
           </ul>
@@ -72,8 +86,8 @@ export default function Footer() {
         <p className="copyright">&copy; {year} MediCore. All rights reserved.</p>
         <ul className="legal-list">
           {LEGAL_LINKS.map((link) => (
-            <li key={link}>
-              <a href="#">{link}</a>
+            <li key={link.label}>
+              <a href={link.href}>{link.label}</a>
             </li>
           ))}
         </ul>

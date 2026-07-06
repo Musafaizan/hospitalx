@@ -58,7 +58,7 @@ export default function Navbar() {
   return (
     <header className={`mc-navbar ${isLight ? "mc-navbar--light" : ""}`}>
       <div className="mc-navbar__inner">
-        <a href="#" className="mc-navbar__brand">
+        <a href="/" className="mc-navbar__brand">
           <span className="mc-navbar__logo">
             <Stethoscope size={18} strokeWidth={2.4} />
           </span>

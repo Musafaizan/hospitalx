@@ -19,7 +19,6 @@ import {
   Clock,
   CheckCircle2,
 } from "lucide-react";
-import solution from "../../../assets/solution-bg.png";  
 import "./style.css";
 
 const IconMap = {
@@ -274,6 +273,7 @@ export default function Solution() {
   const currentTab = TABS[activeTab];
 
   useEffect(() => {
+    const currentSection = sectionRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
@@ -285,13 +285,13 @@ export default function Solution() {
       }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentSection) {
+      observer.observe(currentSection);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentSection) {
+        observer.unobserve(currentSection);
       }
     };
   }, []);

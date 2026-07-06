@@ -9,6 +9,8 @@ export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const currentSection = sectionRef.current;
+
     // Set up the Intersection Observer
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -22,14 +24,14 @@ export default function Hero() {
       }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentSection) {
+      observer.observe(currentSection);
     }
 
     // Cleanup observer on unmount
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentSection) {
+        observer.unobserve(currentSection);
       }
     };
   }, []);
