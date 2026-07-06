@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './page/home/navbar';
 import Hero from './page/home/header';
